@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Happy 21st Birthday!</title>
-
 <style>
   body {
     margin: 0;
@@ -36,10 +35,10 @@
     box-shadow: 0 15px 30px rgba(0,0,0,0.25);
   }
 
-  /* SHINY 21 */
+  /* HAPPY BIRTHDAY 21 */
   h1 {
     font-size: 100px;
-    margin-top: 40px;
+    margin: 40px 0 0 0;
     font-weight: 900;
     background: linear-gradient(45deg, #fcd34d, #f87171, #60a5fa, #34d399);
     -webkit-background-clip: text;
@@ -53,78 +52,80 @@
   }
 
   .subtitle {
-    font-size: 24px;
-    margin-bottom: 25px;
+    font-size: 28px;
+    margin-bottom: 50px;
   }
 
   /* CAKE */
   .cake-wrap {
     position: relative;
-    margin-top: 20px;
+    margin: auto;
+    width: 300px;
+    height: 220px;
   }
 
   .cake {
     position: relative;
-    width: 320px;
-    height: 180px;
+    width: 220px;
+    height: 140px;
     margin: auto;
-    background: linear-gradient(#fef0e6, #fbb6ce);
-    border-radius: 20px;
-    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+    background: linear-gradient(to bottom, #fcd5ce, #f9a8d4);
+    border-radius: 30px 30px 15px 15px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
   }
 
-  /* top icing */
   .cake::before {
     content: "";
     position: absolute;
-    top: -30px;
+    top: -25px;
     width: 100%;
     height: 30px;
-    background: linear-gradient(#fff, #fde2e4);
+    background: linear-gradient(#fff, #ffe4e1);
     border-radius: 20px 20px 10px 10px;
   }
 
   .cake-name {
     position: absolute;
-    top: 80px;
+    top: 50px;
     width: 100%;
-    font-size: 26px;
+    font-size: 22px;
     font-weight: 600;
     color: #831843;
   }
 
-  /* realistic candle */
   .candle {
     position: absolute;
-    top: -65px;
-    left: 155px;
-    width: 12px;
+    top: -55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
     height: 60px;
     background: linear-gradient(#fff,#fcd34d);
-    border-radius: 6px;
+    border-radius: 7px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.4);
   }
 
   .flame {
     position: absolute;
     top: -24px;
-    left: -5px;
+    left: -4px;
     width: 22px;
     height: 22px;
     background: radial-gradient(circle, #fde68a, #f97316);
     border-radius: 50%;
-    animation: flicker 0.4s infinite;
+    animation: flicker 0.5s infinite;
   }
 
   @keyframes flicker {
-    50% { transform: scale(1.15); opacity: 0.9; }
+    0%,100% { transform: scale(1) translateX(0); opacity: 0.9; }
+    50% { transform: scale(1.15) translateX(2px); opacity: 1; }
   }
 
   /* ENVELOPE */
   .envelope {
     position: absolute;
-    right: -90px;
-    top: 35px;
+    top: -60px;
+    right: -140px;
     font-size: 64px;
     cursor: pointer;
     color: #f472b6;
@@ -136,8 +137,8 @@
 
   .envelope-hint {
     position: absolute;
-    right: -130px;
-    top: 120px;
+    right: -180px;
+    top: 20px;
     font-size: 16px;
     font-weight: 600;
     color: #374151;
@@ -177,11 +178,28 @@
   }
 
   @keyframes fall {
-    to { top: 110vh; }
+    0% { transform: translateY(-60px); opacity: 0; }
+    30% { opacity: 1; }
+    100% { transform: translateY(110vh); opacity: 0; }
+  }
+
+  /* MUSIC CONTROL BUTTON */
+  .music-btn {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    padding: 10px 16px;
+    background: #f472b6;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: bold;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    z-index: 50;
   }
 </style>
 </head>
-
 <body>
 
 <!-- START SCREEN -->
@@ -195,17 +213,15 @@
 <div class="cake-wrap">
   <div class="cake">
     <div class="cake-name">06/01/2026</div>
-
     <div class="candle">
       <div class="flame"></div>
     </div>
-
     <div class="envelope" onclick="openMsg()">✉️</div>
     <div class="envelope-hint">Click the envelope 💌</div>
   </div>
 </div>
 
-<!-- MESSAGE -->
+<!-- MESSAGE MODAL -->
 <div class="modal" id="msgBox" onclick="closeMsg()">
   <div class="modal-content">
     <h3>💌 A Message for Visal</h3>
@@ -217,40 +233,60 @@
   </div>
 </div>
 
-<!-- AUDIO -->
-<audio id="birthdayAudio" src="your-song.mp3" preload="auto"></audio>
+<!-- MUSIC CONTROL -->
+<button class="music-btn" id="musicBtn">Play Music 🎵</button>
+
+<!-- AUDIO from YouTube Shorts -->
+<iframe id="ytAudio" width="0" height="0"
+  src="https://www.youtube.com/embed/IlkyBZIdQDk?loop=1&playlist=IlkyBZIdQDk"
+  frameborder="0"
+  allow="autoplay; encrypted-media">
+</iframe>
 
 <script>
-  const audio = document.getElementById('birthdayAudio');
+  const startScreen = document.getElementById("startScreen");
+  const msgBox = document.getElementById("msgBox");
+  const ytAudio = document.getElementById("ytAudio");
+  const musicBtn = document.getElementById("musicBtn");
+  let musicPlaying = false;
 
   function startPage() {
-    document.getElementById("startScreen").style.display = "none";
-    audio.play();
+    startScreen.style.display = "none";
+    // Trigger autoplay via iframe reload
+    ytAudio.src += "&autoplay=1";
+    musicPlaying = true;
+    musicBtn.textContent = "Pause Music ⏸️";
   }
 
-  function openMsg() {
-    document.getElementById("msgBox").style.display = "flex";
-  }
+  function openMsg() { msgBox.style.display = "flex"; }
+  function closeMsg() { msgBox.style.display = "none"; }
 
-  function closeMsg() {
-    document.getElementById("msgBox").style.display = "none";
-  }
+  // Music control button
+  musicBtn.addEventListener("click", () => {
+    if (musicPlaying) {
+      ytAudio.src = ytAudio.src.replace("&autoplay=1","");
+      musicBtn.textContent = "Play Music 🎵";
+      musicPlaying = false;
+    } else {
+      ytAudio.src += "&autoplay=1";
+      musicBtn.textContent = "Pause Music ⏸️";
+      musicPlaying = true;
+    }
+  });
 
-  /* FALLING DECOR */
+  /* FALLING ELEMENTS */
   const items = ["⭐","🤍","🌸","🎂"];
   for (let i = 0; i < 24; i++) {
     const el = document.createElement("div");
     el.className = "fall";
     el.innerText = items[Math.floor(Math.random()*items.length)];
-    el.style.left =
-      (Math.random() < 0.5
-        ? Math.random()*18
-        : 82 + Math.random()*18) + "vw";
-    el.style.animationDuration = (11 + Math.random()*6) + "s";
+    el.style.left = Math.random()*100 + "vw";
+    el.style.animationDuration = (10 + Math.random()*8) + "s";
+    el.style.animationTimingFunction = "ease-in-out";
+    el.style.fontSize = (20 + Math.random()*20) + "px";
     document.body.appendChild(el);
   }
 </script>
 
 </body>
 </html>
-
