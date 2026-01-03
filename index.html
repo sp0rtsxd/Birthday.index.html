@@ -3,193 +3,219 @@
 <head>
 <meta charset="UTF-8">
 <title>Happy 21st Birthday!</title>
+
 <style>
-  body {
-    margin: 0;
-    overflow: hidden;
-    font-family: "Segoe UI", sans-serif;
-    text-align: center;
-    background: linear-gradient(160deg, #fde68a, #fbcfe8, #bfdbfe, #d6b28c);
-    color: #3f3f46;
-  }
+body {
+  margin: 0;
+  overflow: hidden;
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+  background: linear-gradient(160deg, #fde68a, #fbcfe8, #bfdbfe, #d6b28c);
+  color: #3f3f46;
+}
 
-  /* START SCREEN */
-  .start-screen {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: inherit;
-    z-index: 10;
-  }
+/* START SCREEN */
+.start-screen {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: inherit;
+  z-index: 10;
+}
 
-  .start-btn {
-    padding: 20px 45px;
-    font-size: 22px;
-    border: none;
-    border-radius: 50px;
-    background: #f472b6;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-  }
+.start-btn {
+  padding: 20px 45px;
+  font-size: 22px;
+  border: none;
+  border-radius: 50px;
+  background: #f472b6;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+}
 
-  /* HAPPY BIRTHDAY 21 */
-  h1 {
-    font-size: 100px;
-    margin: 40px 0 20px 0; /* more space above and below */
-    font-weight: 900;
-    background: linear-gradient(45deg, #fcd34d, #f87171, #60a5fa, #34d399);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: shine 3s ease-in-out infinite alternate;
-  }
+/* HEADER */
+h1 {
+  font-size: 100px;
+  margin: 40px 0 20px;
+  font-weight: 900;
+  background: linear-gradient(45deg, #fcd34d, #f87171, #60a5fa, #34d399);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shine 3s ease-in-out infinite alternate;
+}
 
-  @keyframes shine {
-    0% { background-position: 0% 50%; }
-    100% { background-position: 100% 50%; }
-  }
+@keyframes shine {
+  from { background-position: 0% 50%; }
+  to { background-position: 100% 50%; }
+}
 
-  .subtitle {
-    font-size: 28px;
-    margin-bottom: 80px; /* bigger gap before cake */
-  }
+.subtitle {
+  font-size: 28px;
+  margin-bottom: 80px;
+}
 
-  /* CAKE */
-  .cake-wrap {
-    position: relative;
-    margin: auto;
-    width: 300px;
-    height: 240px;
-  }
+/* CAKE WRAP (FIXED + CLEAN) */
+.cake-wrap {
+  position: relative;
+  margin: auto;
+  width: fit-content;
+  height: 240px;
+  overflow: hidden;
+}
 
-  .cake {
-    position: relative;
-    width: 220px;
-    height: 140px;
-    margin: auto;
-    background: linear-gradient(to bottom, #fcd5ce, #f9a8d4);
-    border-radius: 30px 30px 15px 15px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-  }
+/* CAKE */
+.cake {
+  position: relative;
+  width: 220px;
+  height: 140px;
+  margin: auto;
+  background: linear-gradient(to bottom, #fcd5ce, #f9a8d4);
+  border-radius: 30px 30px 15px 15px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
+  animation: cakeBounce 4s ease-in-out infinite;
+}
 
-  .cake::before {
-    content: "";
-    position: absolute;
-    top: -25px;
-    width: 100%;
-    height: 30px;
-    background: linear-gradient(#fff, #ffe4e1);
-    border-radius: 20px 20px 10px 10px;
-  }
+@keyframes cakeBounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
 
-  .cake-name {
-    position: absolute;
-    top: 50px;
-    width: 100%;
-    font-size: 22px;
-    font-weight: 600;
-    color: #831843;
-  }
+.cake::before {
+  content: "";
+  position: absolute;
+  top: -25px;
+  width: 100%;
+  height: 30px;
+  background: linear-gradient(#fff, #ffe4e1);
+  border-radius: 20px 20px 10px 10px;
+}
 
-  .candle {
-    position: absolute;
-    top: -55px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 14px;
-    height: 60px;
-    background: linear-gradient(#fff,#fcd34d);
-    border-radius: 7px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
-  }
+.cake-name {
+  position: absolute;
+  top: 50px;
+  width: 100%;
+  font-size: 22px;
+  font-weight: 600;
+  color: #831843;
+}
 
-  .flame {
-    position: absolute;
-    top: -24px;
-    left: -4px;
-    width: 22px;
-    height: 22px;
-    background: radial-gradient(circle, #fde68a, #f97316);
-    border-radius: 50%;
-    animation: flicker 0.5s infinite;
-  }
+/* CANDLE */
+.candle {
+  position: absolute;
+  top: -55px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 60px;
+  background: linear-gradient(#fff,#fcd34d);
+  border-radius: 7px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+}
 
-  @keyframes flicker {
-    0%,100% { transform: scale(1) translateX(0); opacity: 0.9; }
-    50% { transform: scale(1.15) translateX(2px); opacity: 1; }
-  }
+/* SMOOTHER FLAME */
+.flame {
+  position: absolute;
+  top: -26px;
+  left: -6px;
+  width: 26px;
+  height: 26px;
+  background: radial-gradient(circle, #fde68a 30%, #f97316 70%);
+  border-radius: 50%;
+  filter: blur(0.5px);
+  box-shadow: 0 0 15px rgba(249,115,22,0.9);
+  animation: flameFlicker 0.35s infinite alternate;
+}
 
-  /* ENVELOPE UNDER CAKE */
-  .envelope {
-    position: absolute;
-    top: 170px; /* below cake */
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 64px;
-    cursor: pointer;
-    color: #f472b6;
-    padding: 10px;
-    border-radius: 12px;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-    background-color: #fef3c7;
-  }
-
-  .envelope-hint {
-    position: absolute;
-    top: 240px;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 16px;
-    font-weight: 600;
-    color: #374151;
-    background: rgba(255,255,255,0.7);
-    padding: 4px 8px;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
-  }
-
-  /* MESSAGE MODAL */
-  .modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.4);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 20;
-  }
-
-  .modal-content {
-    background: #fff;
-    padding: 30px;
-    border-radius: 22px;
-    width: 320px;
-    color: #374151;
-    text-align: center;
-  }
-
-  /* FALLING ELEMENTS */
-  .fall {
-    position: absolute;
-    top: -60px;
-    font-size: 32px;
+@keyframes flameFlicker {
+  from {
+    transform: scale(1) rotate(-2deg);
     opacity: 0.85;
-    animation: fall linear infinite;
   }
-
-  @keyframes fall {
-    0% { transform: translateY(-60px); opacity: 0; }
-    30% { opacity: 1; }
-    100% { transform: translateY(110vh); opacity: 0; }
+  to {
+    transform: scale(1.15) rotate(2deg);
+    opacity: 1;
   }
+}
 
+/* ENVELOPE */
+.envelope {
+  position: absolute;
+  top: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 64px;
+  cursor: pointer;
+  color: #f472b6;
+  padding: 10px;
+  border-radius: 12px;
+  background: #fef3c7;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+  transition: transform 0.2s ease;
+}
+
+.envelope:hover {
+  transform: translateX(-50%) scale(1.1);
+}
+
+.envelope-hint {
+  position: absolute;
+  top: 240px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 16px;
+  font-weight: 600;
+  background: rgba(255,255,255,0.7);
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+/* MODAL */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 30px;
+  border-radius: 22px;
+  width: 320px;
+}
+
+/* FALLING ITEMS */
+.fall {
+  position: absolute;
+  top: -60px;
+  font-size: 32px;
+  opacity: 0.85;
+  animation: fall linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-60px); opacity: 0; }
+  30% { opacity: 1; }
+  100% { transform: translateY(110vh); opacity: 0; }
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  h1 { font-size: 72px; }
+  .subtitle { font-size: 22px; }
+  .cake { transform: scale(0.9); }
+}
 </style>
 </head>
+
 <body>
 
-<!-- START SCREEN -->
 <div class="start-screen" id="startScreen">
   <button class="start-btn" onclick="startPage()">Click to Start ✨</button>
 </div>
@@ -209,51 +235,45 @@
   <div class="envelope-hint">Click the envelope 💌</div>
 </div>
 
-<!-- MESSAGE MODAL -->
 <div class="modal" id="msgBox" onclick="closeMsg()">
   <div class="modal-content">
     <h3>💌 A Message for Visal</h3>
     <p>
       Happy 21st, buddy 🤍<br>
       I truly hope your life will be filled with love and strength.<br>
-      May you be loved, blessed, and cherished. I am forever thankful to you for always having my back, buddy. 🎂💙
+      May you be loved, blessed, and cherished. 🎂💙
     </p>
   </div>
 </div>
 
-<!-- AUDIO from YouTube Shorts (hidden iframe) -->
 <iframe id="ytAudio" width="0" height="0"
   src="https://www.youtube.com/embed/IlkyBZIdQDk?autoplay=1&loop=1&playlist=IlkyBZIdQDk"
-  frameborder="0"
-  allow="autoplay; encrypted-media">
+  allow="autoplay">
 </iframe>
 
 <script>
-  const startScreen = document.getElementById("startScreen");
-  const msgBox = document.getElementById("msgBox");
-  const ytAudio = document.getElementById("ytAudio");
+const startScreen = document.getElementById("startScreen");
+const msgBox = document.getElementById("msgBox");
+const ytAudio = document.getElementById("ytAudio");
 
-  function startPage() {
-    startScreen.style.display = "none";
-    // Autoplay audio immediately
-    ytAudio.src += "&autoplay=1";
-  }
+function startPage() {
+  startScreen.style.display = "none";
+  ytAudio.src += "&autoplay=1";
+}
 
-  function openMsg() { msgBox.style.display = "flex"; }
-  function closeMsg() { msgBox.style.display = "none"; }
+function openMsg() { msgBox.style.display = "flex"; }
+function closeMsg() { msgBox.style.display = "none"; }
 
-  /* FALLING ELEMENTS */
-  const items = ["⭐","🤍","🌸","🎂"];
-  for (let i = 0; i < 24; i++) {
-    const el = document.createElement("div");
-    el.className = "fall";
-    el.innerText = items[Math.floor(Math.random()*items.length)];
-    el.style.left = Math.random()*100 + "vw";
-    el.style.animationDuration = (10 + Math.random()*8) + "s";
-    el.style.animationTimingFunction = "ease-in-out";
-    el.style.fontSize = (20 + Math.random()*20) + "px";
-    document.body.appendChild(el);
-  }
+const items = ["⭐","🤍","🌸","🎂"];
+for (let i = 0; i < 24; i++) {
+  const el = document.createElement("div");
+  el.className = "fall";
+  el.innerText = items[Math.floor(Math.random()*items.length)];
+  el.style.left = Math.random()*100 + "vw";
+  el.style.animationDuration = (10 + Math.random()*8) + "s";
+  el.style.fontSize = (20 + Math.random()*20) + "px";
+  document.body.appendChild(el);
+}
 </script>
 
 </body>
