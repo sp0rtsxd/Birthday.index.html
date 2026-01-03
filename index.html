@@ -2,242 +2,253 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Happy 21st Birthday!</title>
+<title>Happy 21st Birthday</title>
 
 <style>
-body {
-  margin: 0;
-  overflow-x: hidden; /* FIX: kills right-side weirdness */
-  font-family: "Segoe UI", sans-serif;
-  text-align: center;
-  background: linear-gradient(160deg, #fde68a, #fbcfe8, #bfdbfe, #d6b28c);
-  color: #3f3f46;
-}
+  body {
+    margin: 0;
+    overflow: hidden;
+    font-family: "Segoe UI", sans-serif;
+    text-align: center;
+    background: linear-gradient(160deg, #fde68a, #fbcfe8, #bfdbfe, #d6b28c);
+    color: #3f3f46;
+  }
 
-/* START SCREEN */
-.start-screen {
-  position: fixed;
-  inset: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: inherit;
-  z-index: 10;
-}
+  /* START SCREEN */
+  .start-screen {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: inherit;
+    z-index: 10;
+  }
 
-.start-btn {
-  padding: 20px 45px;
-  font-size: 22px;
-  border: none;
-  border-radius: 50px;
-  background: #f472b6;
-  color: white;
-  cursor: pointer;
-  box-shadow: 0 15px 30px rgba(0,0,0,0.25);
-}
+  .start-btn {
+    padding: 20px 45px;
+    font-size: 22px;
+    border: none;
+    border-radius: 50px;
+    background: #f472b6;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.25);
+  }
 
-/* HEADER */
-h1 {
-  font-size: 100px;
-  margin: 40px 0 20px;
-  font-weight: 900;
-  background: linear-gradient(45deg, #fcd34d, #f87171, #60a5fa, #34d399);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+  /* SHINY 21 */
+  h1 {
+    font-size: 100px;
+    margin-top: 40px;
+    font-weight: 900;
+    background: linear-gradient(45deg, #fcd34d, #f87171, #60a5fa, #34d399);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: shine 3s ease-in-out infinite alternate;
+  }
 
-.subtitle {
-  font-size: 28px;
-  margin-bottom: 100px; /* FIX: pushes cake down */
-}
+  @keyframes shine {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+  }
 
-/* CAKE WRAPPER */
-.cake-wrap {
-  position: relative;
-  margin: auto;
-  width: 260px; /* FIX: no right bar */
-  height: 320px;
-}
+  .subtitle {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
 
-/* CAKE */
-.cake {
-  position: relative;
-  width: 220px;
-  height: 140px;
-  margin: auto;
-  background: linear-gradient(to bottom, #fcd5ce, #f9a8d4);
-  border-radius: 30px 30px 15px 15px;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.25);
-}
+  /* CAKE */
+  .cake-wrap {
+    position: relative;
+    margin-top: 20px;
+  }
 
-.cake::before {
-  content: "";
-  position: absolute;
-  top: -25px;
-  width: 100%;
-  height: 30px;
-  background: linear-gradient(#fff, #ffe4e1);
-  border-radius: 20px 20px 10px 10px;
-}
+  .cake {
+    position: relative;
+    width: 320px;
+    height: 180px;
+    margin: auto;
+    background: linear-gradient(#fef0e6, #fbb6ce);
+    border-radius: 20px;
+    box-shadow: 0 12px 28px rgba(0,0,0,0.25);
+  }
 
-.cake-name {
-  position: absolute;
-  top: 50px;
-  width: 100%;
-  font-size: 22px;
-  font-weight: 600;
-  color: #831843;
-}
+  /* top icing */
+  .cake::before {
+    content: "";
+    position: absolute;
+    top: -30px;
+    width: 100%;
+    height: 30px;
+    background: linear-gradient(#fff, #fde2e4);
+    border-radius: 20px 20px 10px 10px;
+  }
 
-/* CANDLE */
-.candle {
-  position: absolute;
-  top: -55px; /* FIX: no overlap with text */
-  left: 50%;
-  transform: translateX(-50%);
-  width: 14px;
-  height: 60px;
-  background: linear-gradient(#fff,#fcd34d);
-  border-radius: 7px;
-}
+  .cake-name {
+    position: absolute;
+    top: 80px;
+    width: 100%;
+    font-size: 26px;
+    font-weight: 600;
+    color: #831843;
+  }
 
-.flame {
-  position: absolute;
-  top: -24px;
-  left: -4px;
-  width: 22px;
-  height: 22px;
-  background: radial-gradient(circle, #fde68a, #f97316);
-  border-radius: 50%;
-  animation: flicker 0.5s infinite;
-}
+  /* realistic candle */
+  .candle {
+    position: absolute;
+    top: -65px;
+    left: 155px;
+    width: 12px;
+    height: 60px;
+    background: linear-gradient(#fff,#fcd34d);
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.4);
+  }
 
-@keyframes flicker {
-  0%,100% { transform: scale(1); opacity: 0.9; }
-  50% { transform: scale(1.15); opacity: 1; }
-}
+  .flame {
+    position: absolute;
+    top: -24px;
+    left: -5px;
+    width: 22px;
+    height: 22px;
+    background: radial-gradient(circle, #fde68a, #f97316);
+    border-radius: 50%;
+    animation: flicker 0.4s infinite;
+  }
 
-/* ENVELOPE */
-.envelope {
-  position: absolute;
-  top: 185px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 64px;
-  cursor: pointer;
-  background-color: #fef3c7;
-  padding: 10px;
-  border-radius: 12px;
-  box-shadow: 0 6px 12px rgba(0,0,0,0.25);
-}
+  @keyframes flicker {
+    50% { transform: scale(1.15); opacity: 0.9; }
+  }
 
-.envelope-hint {
-  position: absolute;
-  top: 270px; /* FIX: no overlap */
-  left: 50%;
-  transform: translateX(-50%);
-  font-size: 16px;
-  font-weight: 600;
-  background: rgba(255,255,255,0.7);
-  padding: 4px 8px;
-  border-radius: 8px;
-}
+  /* ENVELOPE */
+  .envelope {
+    position: absolute;
+    right: -90px;
+    top: 35px;
+    font-size: 64px;
+    cursor: pointer;
+    color: #f472b6;
+    padding: 10px;
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.25);
+    background-color: #fef3c7;
+  }
 
-/* MODAL */
-.modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.4);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  z-index: 20;
-}
+  .envelope-hint {
+    position: absolute;
+    right: -130px;
+    top: 120px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    background: rgba(255,255,255,0.7);
+    padding: 4px 8px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
 
-.modal-content {
-  background: #fff;
-  padding: 30px;
-  border-radius: 22px;
-  width: 320px;
-}
+  /* MESSAGE MODAL */
+  .modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.4);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 20;
+  }
 
-/* FALLING ITEMS */
-.fall {
-  position: absolute;
-  top: -60px;
-  font-size: 32px;
-  opacity: 0.85;
-  animation: fall linear infinite;
-}
+  .modal-content {
+    background: #fff;
+    padding: 30px;
+    border-radius: 22px;
+    width: 320px;
+    color: #374151;
+    text-align: center;
+  }
 
-@keyframes fall {
-  0% { transform: translateY(-60px); opacity: 0; }
-  30% { opacity: 1; }
-  100% { transform: translateY(110vh); opacity: 0; }
-}
+  /* FALLING ELEMENTS */
+  .fall {
+    position: absolute;
+    top: -60px;
+    font-size: 32px;
+    opacity: 0.85;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    to { top: 110vh; }
+  }
 </style>
 </head>
 
 <body>
 
+<!-- START SCREEN -->
 <div class="start-screen" id="startScreen">
   <button class="start-btn" onclick="startPage()">Click to Start ✨</button>
 </div>
 
 <h1>21</h1>
-<div class="subtitle">Happy Birthday 🤍</div>
+<div class="subtitle">Happy Birthday, Visal 🤍</div>
 
 <div class="cake-wrap">
   <div class="cake">
-    <div class="cake-name">06/01/2026</div>
+    <div class="cake-name">01/06/2026</div>
+
     <div class="candle">
       <div class="flame"></div>
     </div>
+
+    <div class="envelope" onclick="openMsg()">✉️</div>
+    <div class="envelope-hint">Click the envelope 💌</div>
   </div>
-
-  <div class="envelope" onclick="openMsg()">✉️</div>
-  <div class="envelope-hint">Click the envelope 💌</div>
 </div>
-
+<!-- MESSAGE -->
 <div class="modal" id="msgBox" onclick="closeMsg()">
   <div class="modal-content">
     <h3>💌 A Message for Visal</h3>
     <p>
-      Happy 21st, buddy 🤍<br>
-      I truly hope your life will be filled with love and strength.<br>
-      May you be loved, blessed, and cherished. 🎂💙
+      Happy 21st, homie🤍<br>
+      Cheers to another year older, and so our friendship.<br>
+      May your life in this year will be filled with love, blessing, strength, and support. 
+      Thanks for always having my back, buddy.
     </p>
   </div>
 </div>
 
-<iframe id="ytAudio" width="0" height="0"
-  src="https://www.youtube.com/embed/IlkyBZIdQDk?autoplay=1&loop=1&playlist=IlkyBZIdQDk"
-  allow="autoplay">
-</iframe>
+<!-- AUDIO -->
+<audio id="birthdayAudio" src="your-song.mp3" preload="auto"></audio>
 
 <script>
-const startScreen = document.getElementById("startScreen");
-const msgBox = document.getElementById("msgBox");
-const ytAudio = document.getElementById("ytAudio");
+  const audio = document.getElementById('birthdayAudio');
 
-function startPage() {
-  startScreen.style.display = "none";
-  ytAudio.src += "&autoplay=1";
-}
+  function startPage() {
+    document.getElementById("startScreen").style.display = "none";
+    audio.play();
+  }
 
-function openMsg() { msgBox.style.display = "flex"; }
-function closeMsg() { msgBox.style.display = "none"; }
+  function openMsg() {
+    document.getElementById("msgBox").style.display = "flex";
+  }
 
-const items = ["⭐","🤍","🌸","🎂"];
-for (let i = 0; i < 24; i++) {
-  const el = document.createElement("div");
-  el.className = "fall";
-  el.innerText = items[Math.floor(Math.random()*items.length)];
-  el.style.left = Math.random()*100 + "vw";
-  el.style.animationDuration = (10 + Math.random()*8) + "s";
-  el.style.fontSize = (20 + Math.random()*20) + "px";
-  document.body.appendChild(el);
-}
+  function closeMsg() {
+    document.getElementById("msgBox").style.display = "none";
+  }
+
+  /* FALLING DECOR */
+  const items = ["⭐️","🤍","🌸","🎂"];
+  for (let i = 0; i < 24; i++) {
+    const el = document.createElement("div");
+    el.className = "fall";
+    el.innerText = items[Math.floor(Math.random()*items.length)];
+    el.style.left =
+      (Math.random() < 0.5
+        ? Math.random()*18
+        : 82 + Math.random()*18) + "vw";
+    el.style.animationDuration = (11 + Math.random()*6) + "s";
+    document.body.appendChild(el);
+  }
 </script>
 
 </body>
